@@ -139,6 +139,7 @@ bin\windows\kafka-server-start.bat config/server.properties
 The kafka server is now running locally too!
 
 ### 2.3 Create a topic
+#### --------------- Windows ---------------
 To create a new topic open other Command Prompt and go to the path:
 ~~~
 C:\kafka_2.13-3.2.3\bin\windows
@@ -155,23 +156,42 @@ kafka-topics.bat --list --bootstrap-server localhost:9092
 ~~~
 ![topic00](https://snipboard.io/dj9YQe.jpg)
 
+#### --------------- Mac ---------------
+To create a new topic open other Command Prompt and go to the path:
+~~~
+kafka_2.13-3.2.1/bin
+~~~
+
+Then run the following command (**replace {Topic_Name} by the name of your topic**):
+~~~
+sh kafka-topics.sh --create --topic {Topic_Name} --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
+~~~
+
+To list all the topics contined at the broker, run the following command:
+~~~
+sh kafka-topics.sh --list --bootstrap-server localhost:9092
+~~~
+
 ### 2.4 Producer from shell
+#### --------------- Windows ---------------
+
 To create a producer from the Command Promt, run the following command (**replace {Topic_Name} by the name of your topic**):
 ~~~
-kafka-console-producer.bat --broker-list localhost:9092 --topic {Topic_Name}
+sh kafka-console-producer.sh --broker-list localhost:9092 --topic {Topic_Name}
 ~~~
 
 Now you can send messages from the Command Prompt as a producer, but there is no consumer yet to recieve those messages.
 
 ### 2.5 Consumer from shell
+#### --------------- Mac ---------------
 To create a consumer from the Command Prompt, run the following command (**replace {Topic_Name} by the name of your topic**):
 ~~~
-kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic {Topic_Name} 
+sh kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic {Topic_Name}
 ~~~
 
 Now you have a consumer to recieve messages!
 
-It's time to test it, from the producer Command Prompt send a cumple of messages, you will see how those messages are recived by the consumer Command Prompt. 
+It's time to test it, from the producer Command Prompt send a cumple of messages, you will see how those messages are recieved by the consumer Command Prompt. 
 ![message_shell](https://snipboard.io/SDAozV.jpg)
 
 ### 2.6 Python Producer & Consumer
